@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google';
 import { ViewTransitions } from 'next-view-transitions';
 import { Analytics } from '@vercel/analytics/react';
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -38,46 +37,16 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-    <html 
-    lang="en"
-    className={`${inter.className} [scrollbar-gutter:stable]`}
-    >
-      <body className="antialiased tracking-tight">
-          <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 ">
-            <main className="max-w-[100ch] mx-auto w-full space-y-4">
-              {children}
-            </main>
-            <Footer />
-            <Analytics />
-          </div>
+      <html 
+        lang="en"
+        className={`${inter.className} [scrollbar-gutter:stable]`}
+      >
+        <body className="antialiased tracking-tight">
+          {children}
+          <Analytics />
         </body>
-    </html>
+      </html>
     </ViewTransitions>
-  );
-}
-function Footer() {
-  const links = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kyosuke-imura/' },
-    { name: 'Resume', url: 'https://drive.google.com/file/d/1jg5nDfykY3Y0cYtQKn_-dAX_QY9S5Y_X/view?usp=sharing' },
-    { name: 'GitHub', url: 'https://github.com/kyoimura' },
-  ];
-
-  return (
-    <footer className="mt-12 text-center">
-      <div className="flex justify-center space-x-4 tracking-tight">
-        {links.map((link) => (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-300 hover:text-gray-400 transition-colors duration-200"
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-    </footer>
   );
 }
 
